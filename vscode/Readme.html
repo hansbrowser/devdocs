@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Introduction vscode | Development Docs</title>
+    <meta name="description" content="Development documentation.">
+    <link rel="stylesheet" href="/devdocs/assets/style.d82f6ee1.css">
+    <link rel="modulepreload" href="/devdocs/assets/Home.becd438f.js">
+    <link rel="modulepreload" href="/devdocs/assets/app.e3da9a89.js">
+    <link rel="modulepreload" href="/devdocs/assets/vscode_Readme.md.95a93a5e.lean.js">
+    <link rel="modulepreload" href="/devdocs/assets/app.e3da9a89.js">
+    <meta name="twitter:title" content="Introduction vscode | Development Docs">
+    <meta property="og:title" content="Introduction vscode | Development Docs">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme"><header class="nav-bar" data-v-675d8756><div class="sidebar-button" data-v-675d8756><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div><a class="nav-bar-title" href="/devdocs/" aria-label="Development Docs, back to home" data-v-675d8756 data-v-4a583abe><!----> Development Docs</a><div class="flex-grow" data-v-675d8756></div><div class="nav" data-v-675d8756><!----></div><!--[--><!--]--></header><aside class="sidebar" data-v-83e92a68><!----><!--[--><!--]--><ul class="sidebar-links" data-v-83e92a68><!--[--><li class="sidebar-link"><a class="sidebar-link-item" href="#snippets">Snippets</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#user-settings">User Settings</a><!----></li><!--]--></ul><!--[--><!--]--></aside><!-- TODO: make this button accessible --><div class="sidebar-mask"></div><main class="page" data-v-7eddb2c4><div class="container" data-v-7eddb2c4><!--[--><!--]--><div style="position:relative;" class="content" data-v-7eddb2c4><div><h1 id="introduction-vscode" tabindex="-1">Introduction vscode <a class="header-anchor" href="#introduction-vscode" aria-hidden="true">#</a></h1><h2 id="snippets" tabindex="-1">Snippets <a class="header-anchor" href="#snippets" aria-hidden="true">#</a></h2><p>There&#39;s a VsCode Plugin called : snippet creator..</p><p>After installing it , all you have to do is to :</p><ul><li>Select the code that you want to make it a snippet.</li><li>Right click on it and select &quot;Command Palette&quot;(or Ctrl+Shift+P).</li><li>Write &quot;Create Snippet&quot;.</li><li>Choose a snippet name.</li><li>Choose a snippet shortcut.</li><li>Choose type of files needed to be watched to trigger your snippet shortcut. That&#39;s All ..</li></ul><p>Note : if you want to edit your snippets , you will find them in [fileType].json Example : Ctrl+P , then select &quot;javascript.json&quot;</p><h2 id="user-settings" tabindex="-1">User Settings <a class="header-anchor" href="#user-settings" aria-hidden="true">#</a></h2><div class="language-js"><pre><code><span class="token punctuation">{</span>
+  <span class="token string">&quot;gitlens.advanced.messages&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;suppressCommitHasNoPreviousCommitWarning&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;suppressCommitNotFoundWarning&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;suppressFileNotUnderSourceControlWarning&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;suppressGitVersionWarning&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;suppressLineUncommittedWarning&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;suppressNoRepositoryWarning&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;suppressResultsExplorerNotice&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;suppressShowKeyBindingsNotice&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;suppressUpdateNotice&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;suppressWelcomeNotice&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;workbench.iconTheme&quot;</span><span class="token operator">:</span> <span class="token string">&quot;vscode-icons&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;git.enableSmartCommit&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;files.exclude&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;**/.git&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;**/.svn&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;**/.hg&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;**/CVS&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;**/.DS_Store&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;**/Logs/&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;**/obj/&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;**/bin/&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;**/node_modules/&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;**/packages/&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;window.zoomLevel&quot;</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;eslint.validate&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">&quot;javascript&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;javascriptreact&quot;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token string">&quot;language&quot;</span><span class="token operator">:</span> <span class="token string">&quot;vue&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;autoFix&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;eslint.autoFixOnSave&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;eslint.trace.server&quot;</span><span class="token operator">:</span> <span class="token string">&quot;verbose&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;vetur.format.defaultFormatter.html&quot;</span><span class="token operator">:</span> <span class="token string">&quot;js-beautify-html&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;gitlens.keymap&quot;</span><span class="token operator">:</span> <span class="token string">&quot;chorded&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;editor.renderWhitespace&quot;</span><span class="token operator">:</span> <span class="token string">&quot;all&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;editor.detectIndentation&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;editor.insertSpaces&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;editor.formatOnPaste&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;editor.formatOnSave&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;telemetry.enableTelemetry&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;gitlens.historyExplorer.enabled&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;workbench.colorTheme&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Cobalt2&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;explorer.openEditors.visible&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;extensions.showRecommendationsOnlyOnDemand&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;breadcrumbs.enabled&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;workbench.sideBar.location&quot;</span><span class="token operator">:</span> <span class="token string">&quot;right&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;npm.enableScriptExplorer&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;editor.largeFileOptimizations&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div></div><footer class="page-footer" data-v-7eddb2c4 data-v-fb8d84c6><div class="edit" data-v-fb8d84c6><div class="edit-link" data-v-fb8d84c6 data-v-1ed99556><!----></div></div><div class="updated" data-v-fb8d84c6><!----></div></footer><!----><!--[--><!--]--></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"dapper_readme.md\":\"394183fe\",\"devops_readme.md\":\"9311b231\",\"docker_readme.md\":\"5055caf7\",\"dotnet_readme.md\":\"118e9760\",\"dotnet_dotnet22.md\":\"614c9a00\",\"elastic_readme.md\":\"16d890f2\",\"identityserver_readme.md\":\"105ff3d5\",\"identityserver_securing.md\":\"30bcb517\",\"index.md\":\"488d4d5b\",\"javascript_readme.md\":\"0d99f3b6\",\"javascript_async-await.md\":\"9cfc7aab\",\"javascript_pro-tips.md\":\"70b7dd2a\",\"mac_readme.md\":\"9d897320\",\"mssql_readme.md\":\"b1cc874f\",\"npm_readme.md\":\"c9184c1c\",\"vscode_readme.md\":\"95a93a5e\",\"vue_readme.md\":\"9cd5c908\",\"vue_fontawesome.md\":\"35106c7c\",\"vue_snippets.md\":\"e5f335a4\",\"vue_vue-cli.md\":\"737c8170\",\"vue_vuex.md\":\"fe40655a\",\"webpack_readme.md\":\"63a504ed\"}")</script>
+    <script type="module" async src="/devdocs/assets/app.e3da9a89.js"></script>
+    
+  </body>
+</html>

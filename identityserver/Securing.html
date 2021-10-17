@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Securing Web Applications and APIs | Development Docs</title>
+    <meta name="description" content="Development documentation.">
+    <link rel="stylesheet" href="/devdocs/assets/style.d82f6ee1.css">
+    <link rel="modulepreload" href="/devdocs/assets/Home.becd438f.js">
+    <link rel="modulepreload" href="/devdocs/assets/app.e3da9a89.js">
+    <link rel="modulepreload" href="/devdocs/assets/identityserver_Securing.md.30bcb517.lean.js">
+    <link rel="modulepreload" href="/devdocs/assets/app.e3da9a89.js">
+    <meta name="twitter:title" content="Securing Web Applications and APIs | Development Docs">
+    <meta property="og:title" content="Securing Web Applications and APIs | Development Docs">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme"><header class="nav-bar" data-v-675d8756><div class="sidebar-button" data-v-675d8756><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div><a class="nav-bar-title" href="/devdocs/" aria-label="Development Docs, back to home" data-v-675d8756 data-v-4a583abe><!----> Development Docs</a><div class="flex-grow" data-v-675d8756></div><div class="nav" data-v-675d8756><!----></div><!--[--><!--]--></header><aside class="sidebar" data-v-83e92a68><!----><!--[--><!--]--><ul class="sidebar-links" data-v-83e92a68><!--[--><li class="sidebar-link"><a class="sidebar-link-item" href="#dataprotection">Dataprotection</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#interacting-with-the-authentication-system">Interacting with the Authentication System</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#session-management-1">Session Management (1)</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#session-management-2">Session Management (2)</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#external-authentication-openidconnect">External Authentication (OpenIDConnect)</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#api-authentication">API Authentication</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#call-api">Call API</a><!----></li><!--]--></ul><!--[--><!--]--></aside><!-- TODO: make this button accessible --><div class="sidebar-mask"></div><main class="page" data-v-7eddb2c4><div class="container" data-v-7eddb2c4><!--[--><!--]--><div style="position:relative;" class="content" data-v-7eddb2c4><div><h1 id="securing-web-applications-and-apis" tabindex="-1">Securing Web Applications and APIs <a class="header-anchor" href="#securing-web-applications-and-apis" aria-hidden="true">#</a></h1><h2 id="dataprotection" tabindex="-1">Dataprotection <a class="header-anchor" href="#dataprotection" aria-hidden="true">#</a></h2><ul><li>data protection key used for cookies/antiforgerykey/tempdata a.o.</li><li>store key in a place where every scalable app can reach it.</li></ul><h2 id="interacting-with-the-authentication-system" tabindex="-1">Interacting with the Authentication System <a class="header-anchor" href="#interacting-with-the-authentication-system" aria-hidden="true">#</a></h2><div class="language-csharp"><pre><code><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">IAuthenticationService</span>
+<span class="token punctuation">{</span>
+	<span class="token comment">// authenticate the specified schema</span>
+	<span class="token return-type class-name">Task<span class="token punctuation">&lt;</span>AuthenticateResult<span class="token punctuation">&gt;</span></span> <span class="token function">AuthenticateAsync</span><span class="token punctuation">(</span><span class="token range operator">..</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token comment">// session management</span>
+	<span class="token return-type class-name">Task</span> <span class="token function">SignInAsync</span><span class="token punctuation">(</span><span class="token range operator">..</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token return-type class-name">Task</span> <span class="token function">SignOutAsync</span><span class="token punctuation">(</span><span class="token range operator">..</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token comment">// signal that authentication is required</span>
+	<span class="token return-type class-name">Task</span> <span class="token function">ChallengeAsync</span><span class="token punctuation">(</span><span class="token range operator">..</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token comment">// signal that access is denied</span>
+	<span class="token return-type class-name">Task</span> <span class="token function">ForbidAsync</span><span class="token punctuation">(</span><span class="token range operator">..</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="session-management-1" tabindex="-1">Session Management (1) <a class="header-anchor" href="#session-management-1" aria-hidden="true">#</a></h2><div class="language-csharp"><pre><code><span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">ConfigureServices</span><span class="token punctuation">(</span><span class="token class-name">IServicesCollection</span> services<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	services<span class="token punctuation">.</span><span class="token function">AddAuthentication</span><span class="token punctuation">(</span><span class="token named-parameter punctuation">defaultScheme</span><span class="token punctuation">:</span> <span class="token string">&quot;cookies&quot;</span><span class="token punctuation">)</span>
+	<span class="token punctuation">.</span><span class="token function">AddCookie</span><span class="token punctuation">(</span><span class="token string">&quot;cookies&quot;</span><span class="token punctuation">,</span> options <span class="token operator">=&gt;</span>
+	<span class="token punctuation">{</span>
+		options<span class="token punctuation">.</span>LoginPath <span class="token operator">=</span> <span class="token string">&quot;/Account/Login&quot;</span><span class="token punctuation">;</span>
+		options<span class="token punctuation">.</span>AccessDeniedPath <span class="token operator">=</span> <span class="token string">&quot;/Account/Denied&quot;</span><span class="token punctuation">;</span>
+
+		options<span class="token punctuation">.</span>Cookie<span class="token punctuation">.</span>Name <span class="token operator">=</span> <span class="token string">&quot;myApp&quot;</span><span class="token punctuation">;</span>
+		options<span class="token punctuation">.</span>Cookie<span class="token punctuation">.</span>Expiration <span class="token operator">=</span> TimeSpan<span class="token punctuation">.</span><span class="token function">FromHours</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		options<span class="token punctuation">.</span>SlidingExpiration <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+		options<span class="token punctuation">.</span>Cookie<span class="token punctuation">.</span>SameSite <span class="token operator">=</span> SameSiteMode<span class="token punctuation">.</span>Lax<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="session-management-2" tabindex="-1">Session Management (2) <a class="header-anchor" href="#session-management-2" aria-hidden="true">#</a></h2><ul><li>Cookie contains <ul><li>Claims</li><li>Metadata</li></ul></li></ul><div class="language-cs"><pre><code><span class="token class-name"><span class="token keyword">var</span></span> claims <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">List<span class="token punctuation">&lt;</span>Claim<span class="token punctuation">&gt;</span></span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">new</span> <span class="token constructor-invocation class-name">Claim</span><span class="token punctuation">(</span><span class="token string">&quot;sub&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;123&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token keyword">new</span> <span class="token constructor-invocation class-name">Claim</span><span class="token punctuation">(</span><span class="token string">&quot;name&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Bob&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token class-name"><span class="token keyword">var</span></span> ci <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">ClaimsIdentity</span><span class="token punctuation">(</span>claims<span class="token punctuation">,</span> <span class="token string">&quot;password&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;name&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;role&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name"><span class="token keyword">var</span></span> props <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">AuthenticationProperties</span>
+<span class="token punctuation">{</span>
+	Items <span class="token operator">=</span>
+	<span class="token punctuation">{</span>
+		<span class="token punctuation">{</span><span class="token string">&quot;token&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;abc&quot;</span><span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">await</span> HttpContext<span class="token punctuation">.</span><span class="token function">SignInAsync</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token constructor-invocation class-name">ClaimsPrincipal</span><span class="token punctuation">(</span>ci<span class="token punctuation">)</span><span class="token punctuation">,</span> props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre></div><h2 id="external-authentication-openidconnect" tabindex="-1">External Authentication (OpenIDConnect) <a class="header-anchor" href="#external-authentication-openidconnect" aria-hidden="true">#</a></h2><div class="language-csharp"><pre><code>services<span class="token punctuation">.</span><span class="token function">AddAuthentication</span><span class="token punctuation">(</span>options <span class="token operator">=&gt;</span>
+<span class="token punctuation">{</span>
+	options<span class="token punctuation">.</span>DefaultScheme <span class="token operator">=</span> <span class="token string">&quot;cookies&quot;</span><span class="token punctuation">;</span>
+	options<span class="token punctuation">.</span>DefaultChallengeScheme <span class="token operator">=</span> <span class="token string">&quot;oidc&quot;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token function">AddCookie</span><span class="token punctuation">(</span><span class="token string">&quot;cookies&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token function">AddOpenIdConnect</span><span class="token punctuation">(</span><span class="token string">&quot;oidc&quot;</span><span class="token punctuation">,</span> options <span class="token operator">=&gt;</span>
+<span class="token punctuation">{</span>
+	options<span class="token punctuation">.</span>Authority <span class="token operator">=</span> <span class="token string">&quot;https://my.identityserver.nl&quot;</span><span class="token punctuation">;</span>
+	options<span class="token punctuation">.</span>ClientId <span class="token operator">=</span> <span class="token string">&quot;server.hybrid&quot;</span><span class="token punctuation">;</span>
+	options<span class="token punctuation">.</span>ClientSecret <span class="token operator">=</span> <span class="token string">&quot;secret&quot;</span><span class="token punctuation">;</span>
+
+	options<span class="token punctuation">.</span>ResponseType <span class="token operator">=</span> <span class="token string">&quot;code id_token&quot;</span><span class="token punctuation">;</span>
+
+	options<span class="token punctuation">.</span>Scope<span class="token punctuation">.</span><span class="token function">Clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	options<span class="token punctuation">.</span>Scope<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token string">&quot;openid&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	options<span class="token punctuation">.</span>Scope<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token string">&quot;api&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="api-authentication" tabindex="-1">API Authentication <a class="header-anchor" href="#api-authentication" aria-hidden="true">#</a></h2><ul><li>build-in support for JWT tokens</li><li><a href="https://github.com/IdentityModel/IdentityModel.AspNetCore.OAuth2Introspection" target="_blank" rel="noopener noreferrer">https://github.com/IdentityModel/IdentityModel.AspNetCore.OAuth2Introspection</a></li></ul><div class="language-csharp"><pre><code><span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">ConfigureServices</span><span class="token punctuation">(</span><span class="token class-name">IServiceCollection</span> services<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	services<span class="token punctuation">.</span><span class="token function">AddAuthentication</span><span class="token punctuation">(</span><span class="token string">&quot;jwt&quot;</span><span class="token punctuation">)</span>
+	<span class="token punctuation">.</span><span class="token function">AddJwtBearer</span><span class="token punctuation">(</span><span class="token string">&quot;jwt&quot;</span><span class="token punctuation">,</span> options <span class="token operator">=&gt;</span>
+	<span class="token punctuation">{</span>
+		options<span class="token punctuation">.</span>Authority <span class="token operator">=</span> <span class="token string">&quot;https://my.identityserver.nl&quot;</span><span class="token punctuation">;</span>
+		options<span class="token punctuation">.</span>Audience <span class="token operator">=</span> <span class="token string">&quot;api&quot;</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="call-api" tabindex="-1">Call API <a class="header-anchor" href="#call-api" aria-hidden="true">#</a></h2><div class="language-csharp"><pre><code><span class="token keyword">public</span> <span class="token keyword">async</span> <span class="token return-type class-name">Task<span class="token punctuation">&lt;</span>IActionResult<span class="token punctuation">&gt;</span></span> <span class="token function">CallApi</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token comment">// get token from the session (cookie, or something else....)</span>
+	<span class="token class-name"><span class="token keyword">var</span></span> token <span class="token operator">=</span> HttpContext<span class="token punctuation">.</span><span class="token function">GetTokenAsync</span><span class="token punctuation">(</span><span class="token string">&quot;access_token&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token class-name"><span class="token keyword">var</span></span> client <span class="token operator">=</span> _httpClientFactory<span class="token punctuation">.</span><span class="token function">CreateClient</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	client<span class="token punctuation">.</span><span class="token function">SetBearerToken</span><span class="token punctuation">(</span>token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token class-name"><span class="token keyword">var</span></span> response <span class="token operator">=</span> <span class="token keyword">await</span> client<span class="token punctuation">.</span><span class="token function">GetStringAsync</span><span class="token punctuation">(</span><span class="token string">&quot;https://my.api.nl/test&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	ViewBag<span class="token punctuation">.</span>Json <span class="token operator">=</span> JArray<span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token keyword">return</span> <span class="token function">View</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div></div><footer class="page-footer" data-v-7eddb2c4 data-v-fb8d84c6><div class="edit" data-v-fb8d84c6><div class="edit-link" data-v-fb8d84c6 data-v-1ed99556><!----></div></div><div class="updated" data-v-fb8d84c6><!----></div></footer><!----><!--[--><!--]--></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"dapper_readme.md\":\"394183fe\",\"devops_readme.md\":\"9311b231\",\"docker_readme.md\":\"5055caf7\",\"dotnet_readme.md\":\"118e9760\",\"dotnet_dotnet22.md\":\"614c9a00\",\"elastic_readme.md\":\"16d890f2\",\"identityserver_readme.md\":\"105ff3d5\",\"identityserver_securing.md\":\"30bcb517\",\"index.md\":\"488d4d5b\",\"javascript_readme.md\":\"0d99f3b6\",\"javascript_async-await.md\":\"9cfc7aab\",\"javascript_pro-tips.md\":\"70b7dd2a\",\"mac_readme.md\":\"9d897320\",\"mssql_readme.md\":\"b1cc874f\",\"npm_readme.md\":\"c9184c1c\",\"vscode_readme.md\":\"95a93a5e\",\"vue_readme.md\":\"9cd5c908\",\"vue_fontawesome.md\":\"35106c7c\",\"vue_snippets.md\":\"e5f335a4\",\"vue_vue-cli.md\":\"737c8170\",\"vue_vuex.md\":\"fe40655a\",\"webpack_readme.md\":\"63a504ed\"}")</script>
+    <script type="module" async src="/devdocs/assets/app.e3da9a89.js"></script>
+    
+  </body>
+</html>

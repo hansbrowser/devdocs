@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Snippets | Development Docs</title>
+    <meta name="description" content="Development documentation.">
+    <link rel="stylesheet" href="/devdocs/assets/style.d82f6ee1.css">
+    <link rel="modulepreload" href="/devdocs/assets/Home.becd438f.js">
+    <link rel="modulepreload" href="/devdocs/assets/app.e3da9a89.js">
+    <link rel="modulepreload" href="/devdocs/assets/vue_snippets.md.e5f335a4.lean.js">
+    <link rel="modulepreload" href="/devdocs/assets/app.e3da9a89.js">
+    <meta name="twitter:title" content="Snippets | Development Docs">
+    <meta property="og:title" content="Snippets | Development Docs">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme"><header class="nav-bar" data-v-675d8756><div class="sidebar-button" data-v-675d8756><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div><a class="nav-bar-title" href="/devdocs/" aria-label="Development Docs, back to home" data-v-675d8756 data-v-4a583abe><!----> Development Docs</a><div class="flex-grow" data-v-675d8756></div><div class="nav" data-v-675d8756><!----></div><!--[--><!--]--></header><aside class="sidebar" data-v-83e92a68><!----><!--[--><!--]--><ul class="sidebar-links" data-v-83e92a68><!--[--><li class="sidebar-link"><a class="sidebar-link-item" href="#vue-template">Vue template</a><!----></li><!--]--></ul><!--[--><!--]--></aside><!-- TODO: make this button accessible --><div class="sidebar-mask"></div><main class="page" data-v-7eddb2c4><div class="container" data-v-7eddb2c4><!--[--><!--]--><div style="position:relative;" class="content" data-v-7eddb2c4><div><h1 id="snippets" tabindex="-1">Snippets <a class="header-anchor" href="#snippets" aria-hidden="true">#</a></h1><h2 id="vue-template" tabindex="-1">Vue template <a class="header-anchor" href="#vue-template" aria-hidden="true">#</a></h2><div class="language-html"><pre><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><div class="language-js"><pre><code><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> mapState<span class="token punctuation">,</span> mapActions<span class="token punctuation">,</span> mapGetters <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vuex&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> myComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;../components/components.vue&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  components<span class="token operator">:</span> <span class="token punctuation">{</span> myComponent <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  props<span class="token operator">:</span> <span class="token punctuation">{</span>
+    id<span class="token operator">:</span> <span class="token punctuation">{</span>
+      type<span class="token operator">:</span> Number<span class="token punctuation">,</span>
+	  required<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+	  <span class="token function-variable function">validator</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	    <span class="token comment">// The value must match one of these strings</span>
+	    <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token string">&#39;success&#39;</span><span class="token punctuation">,</span> <span class="token string">&#39;warning&#39;</span><span class="token punctuation">,</span> <span class="token string">&#39;danger&#39;</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token operator">-</span><span class="token number">1</span>
+	<span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">data</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      myAttribute<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      myArray<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span> value<span class="token operator">:</span> <span class="token string">&quot;s&quot;</span><span class="token punctuation">,</span> text<span class="token operator">:</span> <span class="token string">&quot;Small&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span> value<span class="token operator">:</span> <span class="token string">&quot;m&quot;</span><span class="token punctuation">,</span> text<span class="token operator">:</span> <span class="token string">&quot;Medium&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span> value<span class="token operator">:</span> <span class="token string">&quot;l&quot;</span><span class="token punctuation">,</span> text<span class="token operator">:</span> <span class="token string">&quot;Large&quot;</span> <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      myObject<span class="token operator">:</span> <span class="token punctuation">{</span>
+        x<span class="token operator">:</span> <span class="token operator">-</span><span class="token number">0.3</span><span class="token punctuation">,</span>
+        y<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        z<span class="token operator">:</span> <span class="token number">0</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  computed<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span><span class="token function">mapState</span><span class="token punctuation">(</span><span class="token string">&quot;myStore&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">&quot;myItem1&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;myItem2&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token operator">...</span><span class="token function">mapGetters</span><span class="token punctuation">(</span><span class="token string">&quot;myStore&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">&quot;myItem3&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">myComputed</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>myObject<span class="token punctuation">.</span>x <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  watch<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">myItem1</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">newItem1<span class="token punctuation">,</span> oldItem1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// do something on state change myItem1</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">mounted</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// do something on mounted</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">created</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// do something on created</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span><span class="token function">mapActions</span><span class="token punctuation">(</span><span class="token string">&quot;myStore&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">&quot;initStore&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">myMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>myAttribute <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre></div><div class="language-css"><pre><code>&lt;style scoped&gt;
+&lt;/style&gt;
+</code></pre></div></div></div><footer class="page-footer" data-v-7eddb2c4 data-v-fb8d84c6><div class="edit" data-v-fb8d84c6><div class="edit-link" data-v-fb8d84c6 data-v-1ed99556><!----></div></div><div class="updated" data-v-fb8d84c6><!----></div></footer><!----><!--[--><!--]--></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"dapper_readme.md\":\"394183fe\",\"devops_readme.md\":\"9311b231\",\"docker_readme.md\":\"5055caf7\",\"dotnet_readme.md\":\"118e9760\",\"dotnet_dotnet22.md\":\"614c9a00\",\"elastic_readme.md\":\"16d890f2\",\"identityserver_readme.md\":\"105ff3d5\",\"identityserver_securing.md\":\"30bcb517\",\"index.md\":\"488d4d5b\",\"javascript_readme.md\":\"0d99f3b6\",\"javascript_async-await.md\":\"9cfc7aab\",\"javascript_pro-tips.md\":\"70b7dd2a\",\"mac_readme.md\":\"9d897320\",\"mssql_readme.md\":\"b1cc874f\",\"npm_readme.md\":\"c9184c1c\",\"vscode_readme.md\":\"95a93a5e\",\"vue_readme.md\":\"9cd5c908\",\"vue_fontawesome.md\":\"35106c7c\",\"vue_snippets.md\":\"e5f335a4\",\"vue_vue-cli.md\":\"737c8170\",\"vue_vuex.md\":\"fe40655a\",\"webpack_readme.md\":\"63a504ed\"}")</script>
+    <script type="module" async src="/devdocs/assets/app.e3da9a89.js"></script>
+    
+  </body>
+</html>
