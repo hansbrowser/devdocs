@@ -1,5 +1,6 @@
 # devdocs
 Development documentation
+https://hansbrowser.github.io/devdocs/
 
 Based on:
 * [VitePress](https://vitepress.vuejs.org/)
