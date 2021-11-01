@@ -10,7 +10,10 @@
 - Unity -> Edit -> Project Settings -> Package Manager
     - "Enable Preview Packages"
 - Unity -> Window -> Package Manager 
-    - XR Interaction Toolkit
+    - XR Interaction Toolkit -> Samples
+        - Default Input Actions -> Import 
+        - XR Device Simulator -> Import 
 - Unity -> Edit -> Project Settings -> XR Plug-in Management 
     - Install XR Plugin Manager
     - Plugin providers -> "Oculus" and "Unity Mock HMD"
+- Unity -> Hierarchy -> XR -> XR Rig (Action based)
