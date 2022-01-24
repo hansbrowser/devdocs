@@ -7,7 +7,7 @@
   "author": "Hans Brouwer <Hans@ttt.nl>",
   "license": "MIT",
   "devDependencies": {
-    "vitepress": "^0.20.0"
+    "vitepress": "^0.21.6"
   },
   "scripts": {
     "docs:dev": "vitepress dev docs",
