@@ -1,5 +1,8 @@
 ﻿# Mac
 
+## GitHub
+* https://github.com/microsoft/vscode-remote-release/issues/4024
+
 ## Terminal
 
 - Remove folder including files (-r="recursive", -f="force")
