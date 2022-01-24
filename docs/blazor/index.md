@@ -1,5 +1,22 @@
 # Blazor
 
+## CascadingParameter
+``` html
+    @inject SessionStateModel SessionState
+
+
+	<CascadingValue Value="@SessionState" Name="SessionState">
+        <Container>
+            @Body
+        </Container>
+    </CascadingValue>
+```
+```cs
+	[CascadingParameter(Name = "SessionState")]
+	private SessionStateModel? SessionState { get; set; }
+
+```
+
 ## RequestParameterFromQuery
 ```cs
 	[Parameter]
