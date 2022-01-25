@@ -67,10 +67,14 @@ builder.Services.AddScoped<SessionStateModel>();
 
 ```
 
-* Razor file
+* MainLayout.razor file
 ```html
 @implements IDisposable
 @inject SessionStateModel SessionState
+
+	<CascadingValue Value="@SessionState" Name="SessionState">
+		<LanguageSelect></LanguageSelect>
+	</CascadingValue>
 
 @code {
 
@@ -84,5 +88,31 @@ builder.Services.AddScoped<SessionStateModel>();
 		SessionState.OnChange -= StateHasChanged;
 	}
 }
+```
+
+* LanguageSelect.razor
+```html
+	@code {
+	[CascadingParameter(Name = "SessionState")]
+	private SessionStateModel? SessionState { get; set; }
+
+	private LanguageModel? _item { get; set; }
+	public LanguageModel? Item
+	{
+		get { return _item; }
+		set
+		{
+			if (_item != value)
+			{
+				_item = value;
+				SessionState!.Languagecode = value?.Code ?? "EN";
+
+				if (ItemChanged.HasDelegate)
+				{
+					ItemChanged.InvokeAsync(value);
+				}
+			}
+		}
+	}
 
 ```
