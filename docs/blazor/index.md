@@ -20,6 +20,10 @@
 ## RequestParameterFromQuery
 ```cs
 	[Parameter]
+	[SupplyParameterFromQuery(Name = "q")]
+	public string? SearchString { get; set; }
+
+	[Parameter]
 	[SupplyParameterFromQuery(Name = "group")]
 	public string[] Groups { get { return _groups.ToArray(); } set { _groups.Clear(); _groups.AddRange(value); } }
 	private readonly List<string> _groups = new();
@@ -27,9 +31,58 @@
     private void UpdateUri()
 	{
 		var parms = new Dictionary<string, object?>();
+		if (!string.IsNullOrEmpty(SearchString)) parms.Add("q", SearchString);
 		if (Groups != null) parms.Add("group", Groups);
 		var uri = NavigationManager!.GetUriWithQueryParameters(parms);
 
 		NavigationManager!.NavigateTo(uri);
 	}
+```
+
+## SessionState
+* SessionStateModel
+```cs
+public class SessionStateModel
+{
+	private string? _languagecode;
+
+	public string? Languagecode
+	{
+		get => _languagecode;
+		set
+		{
+			_languagecode = value;
+			NotifyStateChanged();
+		}
+	}
+
+	public event Action? OnChange;
+
+	private void NotifyStateChanged() => OnChange?.Invoke();
+}
+```
+* Startup.cs / Program.cs
+```cs
+builder.Services.AddScoped<SessionStateModel>();
+
+```
+
+* Razor file
+```html
+@implements IDisposable
+@inject SessionStateModel SessionState
+
+@code {
+
+	protected override void OnInitialized()
+	{
+		SessionState.OnChange += StateHasChanged;
+	}
+
+	public void Dispose()
+	{
+		SessionState.OnChange -= StateHasChanged;
+	}
+}
+
 ```
