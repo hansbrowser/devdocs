@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as i,a}from"./app.898a861e.js";const p='{"title":"youtube","description":"","frontmatter":{},"relativePath":"unity/index.md","lastUpdated":1653835935282}',l={},r=a('',6),n=[r];function o(u,d,s,c,g,h){return i(),e("div",null,n)}var f=t(l,[["render",o]]);export{p as __pageData,f as default};
