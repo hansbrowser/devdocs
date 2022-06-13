@@ -12,7 +12,11 @@ module.exports = {
 			{ text: 'Dapper', link: '/dapper/' }
 		],
 		sidebar: [
-			{ text: 'Azure', link: '/azure/' },
+			{ text: 'Azure', link: '/azure/',
+			children: [
+				{ text: "Logs", link: '/azure/logs' }
+			]
+		},			
 			{ text: 'Blazor', link: '/blazor/' },
 			{ text: 'Dapper', link: '/dapper/' },
 			{ text: 'DevOps', link: '/devops/' },
