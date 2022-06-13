@@ -1,5 +1,5 @@
 module.exports = {
-	base: '/devdocs/',
+	base: '/',
 	title: 'Development Docs',
 	description: 'Development documentation.',
 	head: [
