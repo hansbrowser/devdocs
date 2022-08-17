@@ -1,0 +1,1 @@
+import{_ as n,y as a,x as s,W as o}from"./plugin-vue_export-helper.d4f00d1e.js";const m='{"title":"Fontawesome","description":"","frontmatter":{},"headers":[],"relativePath":"vue/fontawesome.md","lastUpdated":1634462221892}',t={},e=o("",7),p=[e];function c(u,l,r,i,k,d){return s(),a("div",null,p)}var w=n(t,[["render",c]]);export{m as __pageData,w as default};

@@ -1,7 +1,0 @@
-import{_ as e,c as a,o as t,a as n}from"./app.898a861e.js";const g='{"title":"Vue CLI 3","description":"","frontmatter":{},"headers":[{"level":2,"title":"Getting started","slug":"getting-started"},{"level":2,"title":"Features","slug":"features"}],"relativePath":"vue/vue-cli.md","lastUpdated":1634462221920}',s={},r=n(`__VP_STATIC_START__<h1 id="vue-cli-3" tabindex="-1">Vue CLI 3 <a class="header-anchor" href="#vue-cli-3" aria-hidden="true">#</a></h1><h2 id="getting-started" tabindex="-1">Getting started <a class="header-anchor" href="#getting-started" aria-hidden="true">#</a></h2><p>website: <a href="https://cli.vuejs.org" target="_blank" rel="noopener noreferrer">https://cli.vuejs.org</a></p><p>install:</p><div class="language-bash"><pre><code>- <span class="token function">npm</span> <span class="token function">install</span> -g @vue/cli
-- <span class="token function">npm</span> list -g @vue/cli <span class="token punctuation">(</span>new<span class="token punctuation">)</span>
-- <span class="token function">npm</span> list -g vue-cli <span class="token punctuation">(</span>old<span class="token punctuation">)</span>
-</code></pre></div><p>create project:</p><div class="language-bash"><pre><code>vue create my-project
-<span class="token comment"># OR</span>
-vue ui
-</code></pre></div><h2 id="features" tabindex="-1">Features <a class="header-anchor" href="#features" aria-hidden="true">#</a></h2>__VP_STATIC_END__`,8),c=[r];function i(o,p,l,u,d,h){return t(),a("div",null,c)}var v=e(s,[["render",i]]);export{g as __pageData,v as default};
