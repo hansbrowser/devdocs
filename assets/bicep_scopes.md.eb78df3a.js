@@ -1,0 +1,1 @@
+import{_ as e,y as t,x as a}from"./plugin-vue_export-helper.ac3310fd.js";const f='{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"bicep/scopes.md","lastUpdated":1674138845525}',s={};function r(o,c,p,n,_,d){return a(),t("div")}var l=e(s,[["render",r]]);export{f as __pageData,l as default};

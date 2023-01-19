@@ -1,1 +1,0 @@
-import{_ as a,y as n,x as s,W as t}from"./plugin-vue_export-helper.d4f00d1e.js";const h='{"title":"Introduction vue","description":"","frontmatter":{},"headers":[],"relativePath":"vue/index.md","lastUpdated":1653835935282}',e={},p=t("",17),o=[p];function i(c,r,u,l,d,k){return s(),n("div",null,o)}var m=a(e,[["render",i]]);export{h as __pageData,m as default};
