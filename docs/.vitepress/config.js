@@ -12,11 +12,25 @@ module.exports = {
 			{ text: 'Dapper', link: '/dapper/' }
 		],
 		sidebar: [
-			{ text: 'Azure', link: '/azure/',
-			children: [
-				{ text: "Logs", link: '/azure/logs' }
-			]
-		},			
+			{
+				text: 'Azure', link: '/azure/',
+				children: [
+					{ text: "Logs", link: '/azure/logs' }
+				]
+			},
+			{
+				text: 'Bicep', link: '/bicep/',
+				children: [
+					{ text: "Vars", link: '/bicep/vars' },
+					{ text: "Operators", link: '/bicep/operators' },
+					{ text: "Basic bicep files", link: '/bicep/basic' },
+					{ text: "Modules", link: '/bicep/modules' },
+					{ text: "Conditions", link: '/bicep/conditions' },
+					{ text: "Loops", link: '/bicep/loops' },
+					{ text: "Scopes", link: '/bicep/scopes' },
+					{ text: "Too lazy to code", link: '/bicep/toolazytocode' }
+				]
+			},
 			{ text: 'Blazor', link: '/blazor/' },
 			{ text: 'Dapper', link: '/dapper/' },
 			{ text: 'DevOps', link: '/devops/' },
