@@ -8,7 +8,7 @@
 - az provider register --namespace Microsoft.App
 
 ## Next
-```sh
+```bash
 RESOURCE_GROUP="hb"
 LOCATION="North Europe"
 LOG_ANALYTICS_WORKSPACE="hb-logs"
@@ -16,17 +16,17 @@ CONTAINERAPPS_ENVIRONMENT="hb-apps"
 ```
 
 Next, retrieve the Log Analytics Client ID and client secret. 
-```sh
+```bash
 LOG_ANALYTICS_WORKSPACE_CLIENT_ID=`az monitor log-analytics workspace show --query customerId -g $RESOURCE_GROUP -n $LOG_ANALYTICS_WORKSPACE --out tsv`
 ```
 
-```sh
+```bash
 LOG_ANALYTICS_WORKSPACE_CLIENT_SECRET=`az monitor log-analytics workspace get-shared-keys --query primarySharedKey -g $RESOURCE_GROUP -n $LOG_ANALYTICS_WORKSPACE --out tsv`
 ```
 
 Create environment
 
-```sh
+```bash
 az containerapp env create \
   --name $CONTAINERAPPS_ENVIRONMENT \
   --resource-group $RESOURCE_GROUP \
@@ -37,7 +37,7 @@ az containerapp env create \
 
 Create a container app
 
-```sh
+```bash
 az containerapp create \
   --name my-container-app \
   --resource-group $RESOURCE_GROUP \
